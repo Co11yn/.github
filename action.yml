@@ -1,0 +1,17 @@
+name: 'Hello World Action'
+description: 'Говорит Hello World'
+author: 'Ваше имя'
+
+inputs:
+  who-to-greet:
+    description: 'Кого приветствовать'
+    required: true
+    default: 'World'
+
+outputs:
+  time:
+    description: 'Время выполнения'
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
