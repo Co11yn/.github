@@ -1,17 +1,47 @@
-name: 'Hello World Action'
-description: 'Говорит Hello World'
-author: 'Ваше имя'
+name: 'ExternalGUI'
+description: 'Запускает внешний графический интерфейс для управления игровыми процессами и настройками'
+author: 'GitHubUser'
+
+branding:
+  icon: 'crosshair'
+  color: 'green'
 
 inputs:
-  who-to-greet:
-    description: 'Кого приветствовать'
+  game-path:
+    description: 'Путь к исполняемому файлу игры'
     required: true
-    default: 'World'
+    default: './game.exe'
+  config-file:
+    description: 'Путь к файлу конфигурации GUI'
+    required: false
+    default: './config/settings.json'
+  resolution:
+    description: 'Разрешение окна (ширина x высота)'
+    required: false
+    default: '1920x1080'
+  fullscreen:
+    description: 'Запуск в полноэкранном режиме (true/false)'
+    required: false
+    default: 'false'
+  language:
+    description: 'Язык интерфейса (ru/en/de/fr)'
+    required: false
+    default: 'en'
+  log-level:
+    description: 'Уровень логирования (debug/info/warn/error)'
+    required: false
+    default: 'info'
 
 outputs:
-  time:
-    description: 'Время выполнения'
+  pid:
+    description: 'ID запущенного процесса'
+  status:
+    description: 'Статус выполнения (success/failed)'
+  log-file:
+    description: 'Путь к файлу лога'
+  session-id:
+    description: 'Уникальный идентификатор сессии'
 
 runs:
-  using: 'node12'
+  using: 'node20'
   main: 'dist/index.js'
